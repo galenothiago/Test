@@ -1,6 +1,14 @@
 # Zabbix 3 Install on CEntOS 7 with PostgreSQL 9.5
 
+
+# Product Name
+> Short blurb about what your product does.
+
+[![NPM Version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
+[![Downloads Stats][npm-downloads]][npm-url]
 ## Repo installation
+
 
 ### Zabbix repo
 

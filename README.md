@@ -1,4 +1,6 @@
 # REPOSITÓRIO PARA TUTORIAIS DIVERSOS
 
-- [x] Minikube
+- [x] Instalação Minikube
 - [x] Conceitos kubernetes
+- [] Instalação Kubernetes produção
+- [] Instalção PostgreSQL

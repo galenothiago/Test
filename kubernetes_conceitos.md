@@ -136,9 +136,10 @@ mas isolado quando apropriado.
 
 ```bash
 Os arquivos em disco em um Contêiner são efêmeros, 
-o que apresenta alguns problemas para aplicativos não triviais ao executar em Contêineres. Primeiro, quando um Container falha, 
-o kubelet o reinicia, mas os arquivos são perdidos - o Container começa com um estado limpo. 
-Segundo, ao executar contêineres juntos Pod, geralmente é necessário compartilhar arquivos entre esses contêineres. 
+o que apresenta alguns problemas para aplicativos não triviais ao executar em Contêineres. 
+Primeiro, quando um Container falha, o kubelet o reinicia, mas os arquivos são perdidos 
+o Container começa com um estado limpo.Segundo, ao executar contêineres juntos Pod, 
+geralmente é necessário compartilhar arquivos entre esses contêineres. 
 A Volumeabstração do Kubernetes resolve esses dois problemas.
 ```
 

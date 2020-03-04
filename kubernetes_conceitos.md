@@ -11,7 +11,7 @@ dimensionamento e gerenciamento de aplicativos em contêiner.
 ![](https://d33wubrfki0l68.cloudfront.net/7016517375d10c702489167e704dcb99e570df85/7bb53/images/docs/components-of-kubernetes.png)
 
 
-Possibilidades que o kubernetes traz:
+#### Possibilidades que o kubernetes traz:
 
 * Orquestrar containers em vários hosts.
 * Aproveitar melhor o hardware para maximizar os recursos necessários na execução das aplicações corporativas.
@@ -43,7 +43,8 @@ são máquinas que realizam as tarefas solicitadas e atribuídas. A máquina mes
 ```bash
 um grupo de um ou mais containers implantados em um único nó. 
 Todos os containers em um pod compartilham o mesmo endereço IP, IPC, nome do host e outros recursos.
-Os pods separam a rede e o armazenamento do container subjacente. Isso facilita a movimentação dos containers pelo cluster.
+Os pods separam a rede e o armazenamento do container subjacente. 
+Isso facilita a movimentação dos containers pelo cluster.
 ```
 
 #### ReplicaSets: 
@@ -63,7 +64,8 @@ independentemente do local do pod no cluster ou se foi substituído.
 #### Kubelet: 
 
 ```bash
-um serviço executado nos nós que lê os manifestos do container e garante que os containers definidos foram iniciados e estão em execução.
+um serviço executado nos nós que lê os manifestos do container e garante que os containers
+definidos foram iniciados e estão em execução.
 ```
 
 #### kubectl: 
@@ -76,13 +78,15 @@ a ferramenta de configuração da linha de comando do Kubernetes.
 
 ```bash
 Um Deployment fornece atualizações declarativas para Pods e ReplicaSets.
-Você descreve um estado desejado em umDeployment e o Deployment Controller altera o estado real para o estado desejado a uma taxa controlada. 
-Você pode definir implantações para criar novos ReplicaSets ou remover implantações existentes e adotar todos os seus recursos com novas implantações.
+Você descreve um estado desejado em umDeployment e o Deployment Controller altera o estado real para o estado
+desejado a uma taxa controlada. Você pode definir implantações para criar novos ReplicaSets
+ou remover implantações existentes e adotar todos os seus recursos com novas implantações.
 ```
 #### Namespaces:
 
 ```bash
-O Kubernetes suporta vários clusters virtuais suportados pelo mesmo cluster físico. Esses clusters virtuais são chamados de namespaces.
+O Kubernetes suporta vários clusters virtuais suportados pelo mesmo cluster físico. 
+Esses clusters virtuais são chamados de namespaces.
 ```
 
 #### DaemonSet:
@@ -97,8 +101,9 @@ A exclusão de um DaemonSet limpará os Pods que ele criou.
 
 ```
 StatefulSet é o objeto da API de carga de trabalho usado para gerenciar aplicativos com estado.
-Gerencia a Deployment e o dimensionamento de um conjunto de Pods, e fornece garantias sobre o pedido e a exclusividade desses Pods.
-Como uma Deployment, um StatefulSet gerencia os Pods baseados em uma especificação de contêiner idêntica. 
+Gerencia a Deployment e o dimensionamento de um conjunto de Pods, 
+e fornece garantias sobre o pedido e a exclusividade desses Pods. Como uma Deployment, 
+um StatefulSet gerencia os Pods baseados em uma especificação de contêiner idêntica. 
 Ao contrário de uma Deployment, um StatefulSet mantém uma identidade persistente para cada um de seus Pods. 
 Esses pods são criados com a mesma especificação, 
 mas não são intercambiáveis: cada um possui um identificador persistente que mantém em qualquer reagendamento.
@@ -107,31 +112,42 @@ mas não são intercambiáveis: cada um possui um identificador persistente que 
 #### Jobs - Run to Completion:
 
 ```bash
-A Job creates one or more Pods and ensures that a specified number of them successfully terminate. 
-As pods successfully complete, the Job tracks the successful completions. 
-When a specified number of successful completions is reached, the task (ie, Job) is complete. 
-Deleting a Job will clean up the Pods it created.
-A simple case is to create one Job object in order to reliably run one Pod to completion. 
-The Job object will start a new Pod if the first Pod fails or is deleted (for example due to a node hardware failure or a node reboot).
+Um job cria um ou mais Pods e garante que um número especificado deles seja encerrado com êxito.
+Conforme os pods são concluídos com êxito, o Job rastreia as conclusões bem-sucedidas.
+Quando um número especificado de conclusões bem-sucedidas é atingido, a tarefa (ou seja, Trabalho) é concluída.
+A exclusão de um trabalho limpará os Pods criados.
+Um caso simples é criar um objeto de trabalho para executar um pod de maneira confiável até a conclusão.
+O objeto Job iniciará um novo Pod se o primeiro Pod falhar ou for excluído
+(por exemplo, devido a uma falha de hardware do nó ou uma reinicialização do nó).
+
 ```
 
 #### kube-proxy:
 
 ```bash
-Para gerenciar sub-redes de hosts individuais e tornar os serviços disponíveis para outros componentes, um pequeno serviço de proxy chamado kube-proxy é executado em cada servidor de node. Este processo encaminha requisições aos containers corretos, e é geralmente responsável por certificar-se de que o ambiente de rede é previsível e acessível, mas isolado quando apropriado
+Para gerenciar sub-redes de hosts individuais e tornar os serviços disponíveis para outros componentes, 
+um pequeno serviço de proxy chamado kube-proxy é executado em cada servidor de node. 
+Este processo encaminha requisições aos containers corretos, 
+e é geralmente responsável por certificar-se de que o ambiente de rede é previsível e acessível, 
+mas isolado quando apropriado.
 ```
 
 #### Volumes:
 
 ```bash
-Os arquivos em disco em um Contêiner são efêmeros, o que apresenta alguns problemas para aplicativos não triviais ao executar em Contêineres. Primeiro, quando um Container falha, o kubelet o reinicia, mas os arquivos são perdidos - o Container começa com um estado limpo. Segundo, ao executar contêineres juntos Pod, geralmente é necessário compartilhar arquivos entre esses contêineres. A Volumeabstração do Kubernetes resolve esses dois problemas.
+Os arquivos em disco em um Contêiner são efêmeros, 
+o que apresenta alguns problemas para aplicativos não triviais ao executar em Contêineres. Primeiro, quando um Container falha, 
+o kubelet o reinicia, mas os arquivos são perdidos - o Container começa com um estado limpo. 
+Segundo, ao executar contêineres juntos Pod, geralmente é necessário compartilhar arquivos entre esses contêineres. 
+A Volumeabstração do Kubernetes resolve esses dois problemas.
 ```
 
 #### etcd:
 
 ```bash
-Armazenamento de valores-chave consistente e de alta disponibilidade usado como armazenamento de apoio do Kubernetes para todos os dados do cluster.
-Se o cluster do Kubernetes usa o etcd como repositório de backup, verifique se você tem um plano de backup para esses dados.
+Armazenamento de valores-chave consistente e de alta disponibilidade usado como armazenamento de apoio
+do Kubernetes para todos os dados do cluster. Se o cluster do Kubernetes usa o 
+etcd como repositório de backup, verifique se você tem um plano de backup para esses dados.
 Você pode encontrar informações detalhadas sobre o etcd na documentação oficial .
 ```
 

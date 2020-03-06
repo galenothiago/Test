@@ -1,11 +1,11 @@
 # How to install Kubernetes on Centos7 with Kubeadm:
 
-## Primeiro passo é desabilitar o firewall e colocar o selinux em modo permissive:
+## Desabilitar o firewalld e colocar o selinux em modo permissive:
 
 ### Firewalld
 
 ```bash
-systemctl stop firewalld 
+systemctl stop firewalld
 systemctl disable firewalld
 ```
 

@@ -35,7 +35,7 @@ Para que o kubernetes funcione corretamente precisamos instalar um virtualizador
 
 Para instalar o docker podemos usar dois metodos:
 
-Método 1:
+* Método 1:
 
 Instalando os pacotes necessários, repositório e instalando via repositório:
 
@@ -58,7 +58,7 @@ E instalamos o docker:
 yum install docker-ce docker-ce-cli containerd.io
 ```
 
-Método 2: 
+* Método 2: 
 
 Utilizando o script criado por eles:
 
@@ -104,7 +104,7 @@ Com o repositório adicionado podemos instalar os itens a seguir:
 yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 ```
 
-ativamos o kubelet:
+Ativamos o kubelet:
 
 ```bash
 systemctl enable --now kubelet

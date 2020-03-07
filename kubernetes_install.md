@@ -31,9 +31,13 @@ sestatus
 
 ## Instalando o docker ce:
 
-Para que o minikube funcione corretamente precisamos instalar um virtualizador (kvm, virtualbox) ou o docker (que é o que usaremos):
+Para que o kubernetes funcione corretamente precisamos instalar um virtualizador ou o docker:
 
-Pacotes necessários:
+Para instalar o docker podemos usar dois metodos:
+
+Método 1:
+
+Instalando os pacotes necessários, repositório e instalando via repositório:
 
 ```bash
 yum install -y yum-utils \
@@ -47,12 +51,63 @@ yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
 ```
-E por fim instalamos e iniciamos o serviço:
+
+E instalamos o docker:
 
 ```bash
 yum install docker-ce docker-ce-cli containerd.io
+```
+
+Método 2: 
+
+Utilizando o script criado por eles:
+
+```bash
+curl https://get.docker.com/ > script_docker.sh
+```
+
+Permissão de execução no script:
+
+```bash
+chmod +x script_docker.sh
+```
+
+E instalar usando o script:
+
+```bash
+./script_docker.sh
+```
+
+Por fim iniciamos o serviço e ativamos ele no inicio do SO:
+
+```bash
 systemctl start docker
 systemctl enable docker
+```
+## Adicionando repositório do kubernetes:
+
+```bash
+cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+EOF
+```
+
+Com o repositório adicionado podemos instalar os itens a seguir:
+
+```bash
+yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+```
+
+ativamos o kubelet:
+
+```bash
+systemctl enable --now kubelet
 ```
 
 ## References

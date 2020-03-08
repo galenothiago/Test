@@ -163,6 +163,17 @@ Ativamos o kubelet:
 systemctl enable --now kubelet
 ```
 
+## Liberar portar no firewall:
+
+```bash
+Port 6443
+Port 10259
+Port 10257
+Port 10250
+Port 2379 
+Port 2380
+```
+
 ## Apenas no nó de controle: 
 
 Dar o start como nó de controle:
@@ -181,11 +192,9 @@ kubectl apply -f https://docs.projectcalico.org/v3.11/manifests/calico.yaml
 Adicionar eles como workes:
 
 ```bash
-kubeadm join --token <token> <control-plane-host>:<control-plane-port> --discovery-token-ca-cert-hash sha256:<hash>
 kubeadm join <control-plane-host>:<control-plane-port> --token <token> \
     --discovery-token-ca-cert-hash sha256:<hash>
 ```
-
 
 ## References
 

@@ -1,5 +1,7 @@
 # How to install Kubernetes on Centos7 with Kubeadm:
 
+## Em todos os nós:
+
 ## Desabilitar o firewalld e colocar o selinux em modo permissive:
 
 ### Firewalld
@@ -55,7 +57,45 @@ yum-config-manager \
 E instalamos o docker:
 
 ```bash
-yum install docker-ce docker-ce-cli containerd.io
+yum update -y && yum install -y \
+  containerd.io-1.2.10 \
+  docker-ce-19.03.4 \
+  docker-ce-cli-19.03.4
+```
+
+Criar /etc/docker directory.
+
+```bash
+mkdir /etc/docker
+```
+
+Configurando daemon:
+
+```bash
+cat > /etc/docker/daemon.json <<EOF
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m"
+  },
+  "storage-driver": "overlay2",
+  "storage-opts": [
+    "overlay2.override_kernel_check=true"
+  ]
+}
+EOF
+```
+
+```bash
+mkdir -p /etc/systemd/system/docker.service.d
+```
+
+Restart Docker
+
+```bash
+systemctl daemon-reload
+systemctl restart docker
 ```
 
 * Método 2: 
@@ -84,6 +124,19 @@ Por fim iniciamos o serviço e ativamos ele no inicio do SO:
 systemctl start docker
 systemctl enable docker
 ```
+
+Habilitando roteamento de pacote:
+
+```bash
+cat <<EOF > /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.ipv4.ip_forward                 = 1
+net.bridge.bridge-nf-call-iptables  = 1
+EOF
+
+sysctl --system
+```
+
 ## Adicionando repositório do kubernetes:
 
 ```bash
@@ -110,8 +163,32 @@ Ativamos o kubelet:
 systemctl enable --now kubelet
 ```
 
+## Apenas no nó de controle: 
+
+Dar o start como nó de controle:
+
+```bash
+kubeadm init
+```
+
+Instalar a rede Pod (usaremos a calico): 
+
+```bash
+kubectl apply -f https://docs.projectcalico.org/v3.11/manifests/calico.yaml
+```
+## Nos nós workers:
+
+Adicionar eles como workes:
+
+```bash
+kubeadm join --token <token> <control-plane-host>:<control-plane-port> --discovery-token-ca-cert-hash sha256:<hash>
+kubeadm join <control-plane-host>:<control-plane-port> --token <token> \
+    --discovery-token-ca-cert-hash sha256:<hash>
+```
+
+
 ## References
 
 1. https://kubernetes.io/docs/tasks/tools/install-kubectl/
 1. https://docs.docker.com/install/linux/docker-ce/centos/
-1. https://www.server-world.info/en/note?os=CentOS_7&p=kubernetes&f=1
+1. https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/

@@ -149,7 +149,7 @@ A Volumeabstração do Kubernetes resolve esses dois problemas.
 Armazenamento de valores-chave consistente e de alta disponibilidade usado como armazenamento de apoio
 do Kubernetes para todos os dados do cluster. Se o cluster do Kubernetes usa o 
 etcd como repositório de backup, verifique se você tem um plano de backup para esses dados.
-Você pode encontrar informações detalhadas sobre o etcd na documentação oficial .
+Você pode encontrar informações detalhadas sobre o etcd na documentação oficial.
 ```
 
 ## References

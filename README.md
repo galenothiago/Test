@@ -1,7 +1,8 @@
 # REPOSITÓRIO PARA TUTORIAIS DIVERSOS
 
-- [x] Instalação Minikube
 - [x] Conceitos kubernetes
-- [ ] Instalação Kubernetes produção
-- [ ] Instalação PostgreSQL
-- [ ] Instalação Docker
+- [x] Instalação Docker (feito nos tutoriais de kubernetes)
+- [x] Instalação Kubernetes com Minikube
+- [x] Instalação Kubernetes com Kubeadm
+- [ ] Instalação Cluster PostgreSQL
+

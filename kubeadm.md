@@ -199,5 +199,6 @@ kubeadm join <control-plane-host>:<control-plane-port> --token <token> \
 ## References
 
 1. https://kubernetes.io/docs/tasks/tools/install-kubectl/
+1. https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
 1. https://docs.docker.com/install/linux/docker-ce/centos/
 1. https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/

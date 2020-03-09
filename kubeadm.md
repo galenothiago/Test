@@ -103,7 +103,7 @@ systemctl restart docker
 Utilizando o script criado por eles:
 
 ```bash
-curl https://get.docker.com/ > script_docker.sh
+curl https://get.docker.com/ -o script_docker.sh
 ```
 
 Permissão de execução no script:

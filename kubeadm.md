@@ -165,14 +165,23 @@ systemctl enable --now kubelet
 
 ### Liberar portar no firewall:
 
-```bash
-Port 6443
-Port 10259
-Port 10257
-Port 10250
-Port 2379 
-Port 2380
-```
+* Control-plane node(s)
+
+| Protocol | Direction | Port Range |         Purpose         |        Used By       |
+|:--------:|:---------:|:----------:|:-----------------------:|:--------------------:|
+|    TCP   |  Inbound  |    6443*   |  Kubernetes API server  |          All         |
+|    TCP   |  Inbound  |  2379-2380 |  etcd server client API | kube-apiserver, etcd |
+|    TCP   |  Inbound  |    10250   |       Kubelet API       |  Self, Control plane |
+|    TCP   |  Inbound  |    10251   |      kube-scheduler     |         Self         |
+|    TCP   |  Inbound  |    10252   | kube-controller-manager |         Self         |
+
+* Worker node(s)
+
+| Protocol | Direction |  Port Range |      Purpose      |       Used By       |
+|:--------:|:---------:|:-----------:|:-----------------:|:-------------------:|
+|    TCP   |  Inbound  |    10250    |    Kubelet API    | Self, Control plane |
+|    TCP   |  Inbound  | 30000-32767 | NodePort Services |         All         |
+
 
 ## Apenas no nó de controle: 
 

@@ -35,7 +35,7 @@ sestatus
 
 Para que o kubernetes funcione corretamente precisamos instalar um virtualizador ou o docker:
 
-Para instalar o docker podemos usar dois metodos:
+Para instalar o docker podemos usar dois métodos:
 
 * Método 1:
 

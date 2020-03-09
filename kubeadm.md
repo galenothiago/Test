@@ -31,7 +31,7 @@ Verificar se está no modo permissive:
 sestatus
 ```
 
-## Instalando o docker ce:
+### Instalando o docker ce:
 
 Para que o kubernetes funcione corretamente precisamos instalar um virtualizador ou o docker:
 

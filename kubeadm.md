@@ -125,7 +125,7 @@ systemctl start docker
 systemctl enable docker
 ```
 
-## Habilitando roteamento de pacote:
+### Habilitando roteamento de pacote:
 
 ```bash
 cat <<EOF > /etc/sysctl.d/k8s.conf
@@ -163,7 +163,7 @@ Ativamos o kubelet:
 systemctl enable --now kubelet
 ```
 
-## Liberar portar no firewall:
+### Liberar portar no firewall:
 
 ```bash
 Port 6443

@@ -177,10 +177,10 @@ systemctl enable --now kubelet
 
 * Worker node(s)
 
-| Protocol | Direction |  Port Range |      Purpose      |       Used By       |
-|:--------:|:---------:|:-----------:|:-----------------:|:-------------------:|
-|    TCP   |  Inbound  |    10250    |    Kubelet API    | Self, Control plane |
-|    TCP   |  Inbound  | 30000-32767 | NodePort Services |         All         |
+| Protocol | Direction |  Port Range |      Purpose           |       Used By       |
+|:--------:|:---------:|:-----------:|:----------------------:|:-------------------:|
+|    TCP   |  Inbound  |    10250    |       Kubelet API      | Self, Control plane |
+|    TCP   |  Inbound  | 30000-32767 |    NodePort Services   |         All         |
 
 
 ## Apenas no nó de controle: 
@@ -196,7 +196,7 @@ Instalar a rede Pod (usaremos a calico):
 ```bash
 kubectl apply -f https://docs.projectcalico.org/v3.11/manifests/calico.yaml
 ```
-## Nos nós workers:
+## Apenas nos nós workers:
 
 Adicionar eles como workes:
 

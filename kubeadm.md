@@ -204,6 +204,19 @@ Adicionar eles como workes:
 kubeadm join <control-plane-host>:<control-plane-port> --token <token> \
     --discovery-token-ca-cert-hash sha256:<hash>
 ```
+## Como remover um nó:
+
+No nó de controle:
+
+```bash
+kubectl drain <node name> --delete-local-data --force --ignore-daemonsets
+kubectl delete node <node name>
+```
+No nó worker:
+
+```bash
+kubeadm reset
+```
 
 ## References
 

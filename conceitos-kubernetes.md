@@ -2,7 +2,7 @@
 
 ## O que é?:
 
-```bash
+```
 O Kubernetes (K8s) é um sistema de código aberto para automatizar a implatação, 
 dimensionamento e gerenciamento de aplicativos em contêiner.
 ```

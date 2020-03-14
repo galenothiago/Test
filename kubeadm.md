@@ -33,7 +33,7 @@ sestatus
 
 ## Instalando o docker ce:
 
-[Instalação Docker](https://github.com/galenothiago/estudos-javascript/blob/master/fundamentos/organizacao.js)
+[Instalação Docker](https://github.com/galenothiago/tutoriais/blob/master/docker.md)
 
 ### Habilitando roteamento de pacote:
 

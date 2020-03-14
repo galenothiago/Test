@@ -59,7 +59,7 @@ mv minikube /usr/bin/
 
 ## Instalando o docker ce:
 
-[Instalação Docker](https://github.com/galenothiago/estudos-javascript/blob/master/fundamentos/organizacao.js)
+[Instalação Docker](https://github.com/galenothiago/tutoriais/blob/master/docker.md)
 
 ## Após todas essas configurações efetuadas startamos o minikube:
 

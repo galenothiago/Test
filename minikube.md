@@ -57,32 +57,10 @@ chmod 755 minikube
 mv minikube /usr/bin/
 ```
 
-
 ## Instalando o docker ce:
 
-Para que o minikube funcione corretamente precisamos instalar um virtualizador (kvm, virtualbox) ou o docker (que é o que usaremos):
+[Instalação Docker](https://github.com/galenothiago/estudos-javascript/blob/master/fundamentos/organizacao.js)
 
-Pacotes necessários:
-
-```bash
-yum install -y yum-utils \
-  device-mapper-persistent-data \
-  lvm2
-```
-Adicionamos o repositório oficial:
-
-```bash
-yum-config-manager \
-    --add-repo \
-    https://download.docker.com/linux/centos/docker-ce.repo
-```
-E por fim instalamos e iniciamos o serviço:
-
-```bash
-yum install docker-ce docker-ce-cli containerd.io
-systemctl start docker
-systemctl enable docker
-```
 ## Após todas essas configurações efetuadas startamos o minikube:
 
 ```bash

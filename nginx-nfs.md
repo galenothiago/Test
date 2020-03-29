@@ -2,7 +2,7 @@
 
 ## Instalando o NFS Server para uso pelo kubernetes
 
-[Instalação NFS Server](https://github.com/galenothiago/tutoriais/blob/master/nfs-server.md)
+> [Instalação NFS Server](https://github.com/galenothiago/tutoriais/blob/master/nfs-server.md)
 
 Após a instalação do server, em outra maquina, ou em uma das maquinas do cluster (não recomendado)
 é bom testar se o manager consegue pingar o NFS Server e acessar sua pasta compartilhada.
@@ -32,11 +32,13 @@ Para que a solução funcione precisamos usar os conceitos de Volume, Volume per
 
 ```bash
 Volume Kubernetes, tem uma vida útil explícita - o mesmo que o Pod que o inclui. Conseqüentemente,
-um volume sobrevive a todos os contêineres executados no Pod e os dados são preservados nas reinicializações do contêiner.
-Obviamente, quando um Pod deixar de existir, o volume deixará de existir também. Talvez mais importante que isso,
-o Kubernetes suporta muitos tipos de volumes, e um Pod pode usar qualquer número deles simultaneamente
-Na sua essência, um volume é apenas um diretório, possivelmente com alguns dados, acessíveis aos Containers em um Pod.
-Como esse diretório é criado, a mídia que o suporta e o conteúdo é determinado pelo tipo de volume específico usado.
+um volume sobrevive a todos os contêineres executados no Pod e
+os dados são preservados nas reinicializações do contêiner. Obviamente, quando um Pod deixar de existir,
+o volume deixará de existir também. Talvez mais importante que isso,
+o Kubernetes suporta muitos tipos de volumes, e um Pod pode usar qualquer número deles simultaneamente.
+Na sua essência, um volume é apenas um diretório, possivelmente com alguns dados,
+acessíveis aos Containers em um Pod. Como esse diretório é criado,
+a mídia que o suporta e o conteúdo é determinado pelo tipo de volume específico usado.
 ```
 
 ### Volume Persistente
@@ -61,7 +63,7 @@ Um PersistentVolumeClaim (PVC) é uma solicitação de armazenamento por um usu�
 É semelhante a um Pod. Os pods consomem recursos de nó e os PVCs consomem recursos de PV.
 Os pods podem solicitar níveis específicos de recursos (CPU e memória).
 As reivindicações podem solicitar tamanhos específicos e modos de acesso
-(por exemplo, eles podem ser montados uma vez que sejam de leitura / gravação ou muitas vezes somente leitura).
+(eles podem ser montados uma vez que sejam de leitura / gravação ou muitas vezes somente leitura).
 ```
 
  df -kh

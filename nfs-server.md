@@ -78,3 +78,4 @@ mount -t nfs <IP_NFS_SERVER>:/var/nfsshare /mnt/
 ## References
 
 1. https://www.howtoforge.com/tutorial/setting-up-an-nfs-server-and-client-on-centos-7/
+2. 

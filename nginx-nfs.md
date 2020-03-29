@@ -3,7 +3,8 @@
 ## Instalando o NFS Server para uso pelo kubernetes
 
 [Instalação NFS Server](https://github.com/galenothiago/tutoriais/blob/master/nfs-server.md)
-[go](http://stackoverflow.com){:target="_blank" rel="noopener"}
+
+[go](http://stackoverflow.com)(:target="_blank" rel="noopener")
 
 ## Entendimento Teórico
 

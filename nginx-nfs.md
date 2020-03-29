@@ -6,7 +6,8 @@
 
 [go](http://stackoverflow.com){:target="_blank"}
 
-- [x] <a href="http://stackoverflow.com" target="_blank"> Test </a>
+<a href="http://stackoverflow.com" target="_blank"> Test </a>
+
 - [ ] ess
 
 ## Entendimento Teórico

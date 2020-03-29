@@ -24,9 +24,9 @@ systemctl enable nfs-idmap
 Criamos a pasta que será usada para o compartilhamento:
 
 ```bash
-mkdir /var/nfsshare
-chown nfsnobody:nfsnobody /var/nfsshare
-chmod 755 /var/nfsshare
+mkdir /pasta/compartilhada
+chown nfsnobody:nfsnobody /pasta/compartilhada
+chmod 755 /pasta/compartilhada
 ```
 
 Declaramos a pasta que será exposta:
@@ -38,7 +38,7 @@ vim /etc/exports
 Dentro do /etc/exports declaramos:
 
 ```bash
-/var/nfs        *(rw,sync,no_subtree_check)
+/pasta/compartilhada    *(rw,sync,no_subtree_check)
 ```
 
 Após adicionar o compartilhamento no /etc/exports
@@ -69,7 +69,7 @@ Montamos a partição:
 * Para o uso imediato (Perde a montagem após reiniciar a máquina):
   
 ```bash
-mount -t nfs <IP_NFS_SERVER>:/var/nfsshare /mnt/
+mount -t nfs <IP_NFS_SERVER>:/pasta/compartilhada /mnt/
 ```
 
 * Para iniciar junto com SO (Fica ativo mesmo reiniciando a máquina):
@@ -79,7 +79,7 @@ vim  /etc/fstab
 ```
 
 ```bash
-<IP_NFS_SERVER>:/var/nfsshare  /mnt/  nfs      rw,sync,hard,intr  0     0
+<IP_NFS_SERVER>:/pasta/compartilhada  /mnt/  nfs      rw,sync,hard,intr  0     0
 ```
 
 ### Observações

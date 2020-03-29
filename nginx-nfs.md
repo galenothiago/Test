@@ -66,7 +66,143 @@ As reivindicações podem solicitar tamanhos específicos e modos de acesso
 (eles podem ser montados uma vez que sejam de leitura / gravação ou muitas vezes somente leitura).
 ```
 
- df -kh
+### Storage Class
+
+```bash
+Um StorageClass fornece uma maneira para os administradores descreverem as “classes” de armazenamento.
+Classes diferentes podem ser mapeadas para níveis de qualidade de serviço,
+para políticas de backup ou para políticas arbitrárias determinadas pelos administradores de cluster.
+O próprio Kubernetes não tem opinião sobre o que as classes representam.
+Às vezes, esse conceito é chamado de "perfis" em outros sistemas de armazenamento
+```
+
+### Criando o persistence volume storage class NFS
+
+```bash
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-pv
+  labels:
+    name: mynfs # qualquer nome
+spec:
+  storageClassName: manual # mesmo storage class que persistence volume claim
+  capacity:
+    storage: 200Mi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: <IP_NFS_SERVER> # ip do NFS server
+    path: "/pasta/compartilhada" # pasta compartilhada
+```
+
+* Fazemos o deploy do mesmo:
+
+```bash
+kubectl apply -f nfs.yaml
+```
+
+### Criando o persistence volume claim
+
+```bash
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-pvc
+spec:
+  storageClassName: manual # mesmo storage class que persistence volume
+  accessModes:
+    - ReadWriteMany #  mesmo tipo que no  PersistentVolume
+  resources:
+    requests:
+      storage: 50Mi
+```
+
+* Fazemos o deploy do mesmo:
+
+```bash
+kubectl apply -f pvc-nfs.yaml
+```
+
+### Com o PV e PVC criados podemos fazer o deploy do nginx para usa-los
+
+#### Neste deploy usarei o nginx como um serviço sendo exposto pelo HAProxy-Ingress e o nip.io como DNS
+
+```bash
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+  name: nfs-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      volumes:
+      - name: nfs-test
+        persistentVolumeClaim:
+          claimName: nfs-pvc # mesmo nome do pvc que foi criado
+      containers:
+      - image: nginx
+        resources:
+          requests:
+            memory: 50Mi
+            cpu: 50m
+          limits:
+            memory: 100Mi
+            cpu: 100m
+        name: nginx
+        volumeMounts:
+        - name: nfs-test # o nome do volume deve corresponder ao volume ClaimName
+          mountPath: /usr/share/nginx/html # aonde o volume será montado
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: nginx
+  name: nfs-nginx
+  namespace: default
+spec:
+  type: ClusterIP
+  selector:
+    app: nginx
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nfs-nginx
+spec:
+  rules:
+  - host: nfs-nginx.IP.nip.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: nfs-nginx
+          servicePort: 80
+```
+
+
+
+
+
+
 
 
 

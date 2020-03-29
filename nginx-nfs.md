@@ -204,19 +204,19 @@ spec:
 kubectl apply -f nginx-nfs.yaml
 ```
 
-#### Aqui podemos ver que o NFS server foi montado no manager
+#### Aqui podemos ver que o NFS server foi montado (na mão) no manager
 
 ![Montando o NFS SErver no manager](https://github.com/galenothiago/tutoriais/blob/master/images/nfs-manager.jpeg?raw=true)
 
 #### Aqui podemos ver que o NFS Server foi montado no worker como um volume persistente
 
-Mesmo sem ter termos feito nada no worker
+Mesmo sem termos montado nada worker
 
 ![Volume persistente no worker](https://github.com/galenothiago/tutoriais/blob/master/images/pv-worker.jpeg?raw=true)
 
 #### Por fim o resultado
 
-O nignx subiu pegando o arquivo index.html do NFS server
+O nignx subiu pegando o arquivo index.html criado diretamente no NFS server
 
 ![Nginx UP](https://github.com/galenothiago/tutoriais/blob/master/images/nginx.jpg?raw=true)
 

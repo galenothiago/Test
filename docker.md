@@ -1,4 +1,4 @@
-# Instalando o docker ce:
+# Instalando o docker ce
 
 Para que o kubernetes funcione corretamente precisamos instalar um virtualizador ou o docker:
 
@@ -25,9 +25,9 @@ E instalamos o docker:
 
 ```bash
 yum update -y && yum install -y \
-  containerd.io-1.2.10 \
-  docker-ce-19.03.4 \
-  docker-ce-cli-19.03.4
+  containerd.io \
+  docker-ce \
+  docker-ce-cli
 ```
 
 Criar /etc/docker directory.

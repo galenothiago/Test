@@ -1,8 +1,8 @@
-# How to install Kubernetes on Centos7 with Kubeadm:
+# How to install Kubernetes on Centos7 with Kubeadm
 
-## Em todos os nós:
+## Em todos os nós
 
-## Desabilitar o firewalld e colocar o selinux em modo permissive:
+## Desabilitar o firewalld e colocar o selinux em modo permissive
 
 ### Firewalld
 
@@ -31,11 +31,11 @@ Verificar se está no modo permissive:
 sestatus
 ```
 
-## Instalando o docker ce:
+## Instalando o docker ce
 
 [Instalação Docker](https://github.com/galenothiago/tutoriais/blob/master/docker.md)
 
-### Habilitando roteamento de pacote:
+### Habilitando roteamento de pacote
 
 ```bash
 cat <<EOF > /etc/sysctl.d/k8s.conf
@@ -47,7 +47,7 @@ EOF
 sysctl --system
 ```
 
-## Adicionando repositório do kubernetes:
+## Adicionando repositório do kubernetes
 
 ```bash
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
@@ -74,7 +74,7 @@ Ativamos o kubelet:
 systemctl enable --now kubelet
 ```
 
-### Liberar portar no firewall:
+### Liberar portar no firewall
 
 * Control-plane node(s)
 
@@ -93,8 +93,7 @@ systemctl enable --now kubelet
 |    TCP   |  Inbound  |    10250    |       Kubelet API      | Self, Control plane |
 |    TCP   |  Inbound  | 30000-32767 |    NodePort Services   |         All         |
 
-
-## Apenas no nó de controle: 
+## Apenas no nó de controle
 
 Dar o start como nó de controle:
 
@@ -102,12 +101,13 @@ Dar o start como nó de controle:
 kubeadm init
 ```
 
-Instalar a rede Pod (usaremos a calico): 
+Instalar a rede Pod (usaremos a calico):
 
 ```bash
 kubectl apply -f https://docs.projectcalico.org/v3.11/manifests/calico.yaml
 ```
-## Apenas nos nós workers:
+
+## Apenas nos nós workers
 
 Adicionar eles como workes:
 
@@ -115,7 +115,8 @@ Adicionar eles como workes:
 kubeadm join <control-plane-host>:<control-plane-port> --token <token> \
     --discovery-token-ca-cert-hash sha256:<hash>
 ```
-## Como remover um nó:
+
+## Como remover um nó
 
 No nó de controle:
 

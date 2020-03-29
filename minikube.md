@@ -14,6 +14,7 @@ systemctl disable firewalld
 ```bash
 setenforce 0
 ```
+
 Verificar se está no modo permissive:
 
 ```bash

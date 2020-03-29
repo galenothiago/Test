@@ -58,7 +58,6 @@ firewall-cmd --reload
 
 ## Client NFS
 
-
 Instalamos o pacote do NFS:
 
 ```bash
@@ -67,8 +66,20 @@ yum install nfs-utils
 
 Montamos a partição:
 
+* Para o uso imediato (Perde a montagem após reiniciar a máquina):
+  
 ```bash
 mount -t nfs <IP_NFS_SERVER>:/var/nfsshare /mnt/
+```
+
+* Para iniciar junto com SO (Fica ativo mesmo reiniciando a máquina):
+
+```bash
+vim  /etc/fstab
+```
+
+```bash
+<IP_NFS_SERVER>:/var/nfsshare  /mnt/  nfs      rw,sync,hard,intr  0     0
 ```
 
 ### Observações

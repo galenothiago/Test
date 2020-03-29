@@ -4,4 +4,6 @@
 - [x] [Instalação Docker CE](https://github.com/galenothiago/tutoriais/blob/master/docker.md)
 - [x] [Instalação Kubernetes com Minikube](https://github.com/galenothiago/tutoriais/blob/master/minikube.md)
 - [x] [Instalação Kubernetes com Kubeadm](https://github.com/galenothiago/tutoriais/blob/master/kubeadm.md)
-- [ ] [Instalação Cluster PostgreSQL]
+- [x] [NFS Server on CentOS 7](https://github.com/galenothiago/tutoriais/blob/master/kubeadm.md)
+- [x] [Nginx com NFS Server](https://github.com/galenothiago/tutoriais/blob/master/kubeadm.md)
+- [ ] Instalação Cluster PostgreSQL

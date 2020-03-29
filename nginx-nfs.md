@@ -4,7 +4,9 @@
 
 [Instalação NFS Server](https://github.com/galenothiago/tutoriais/blob/master/nfs-server.md)
 
-[go](http://stackoverflow.com)(:target="_blank" rel="noopener")
+[go](http://stackoverflow.com){:target="_blank"}
+
+- [x] <a href="http://stackoverflow.com" target="_blank">Go</a>
 
 ## Entendimento Teórico
 

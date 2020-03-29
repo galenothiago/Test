@@ -1,8 +1,31 @@
 # How to use Nginx with NFS server on Kubernetes
 
-## Instalando o NFS Server
+## Instalando o NFS Server para uso pelo kubernetes
 
 [Instalação NFS Server](https://github.com/galenothiago/tutoriais/blob/master/nfs-server.md)
+[go](http://stackoverflow.com){:target="_blank" rel="noopener"}
+
+## Entendimento Teórico
+
+Para que a solução funcione precisamos usar os conceitos de Volumes, Volume persistente e Volume claim
+
+### Volume
+
+```bash
+setenforce 0
+```
+
+### Volume Persistente
+
+```bash
+setenforce 0
+```
+
+### Volume Claim
+
+```bash
+setenforce 0
+```
 
 ## References
 

@@ -76,6 +76,8 @@ O próprio Kubernetes não tem opinião sobre o que as classes representam.
 Às vezes, esse conceito é chamado de "perfis" em outros sistemas de armazenamento
 ```
 
+## Escrevendo os YAML
+
 ### Criando o persistence volume storage class NFS
 
 ```bash

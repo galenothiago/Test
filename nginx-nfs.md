@@ -206,6 +206,8 @@ spec:
 kubectl apply -f nginx-nfs.yaml
 ```
 
+## Aplicação em uso
+
 #### Aqui podemos ver que o NFS server foi montado (na mão) no manager
 
 ![Montando o NFS SErver no manager](https://github.com/galenothiago/tutoriais/blob/master/images/nfs-manager.jpeg?raw=true)

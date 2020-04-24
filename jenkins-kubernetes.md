@@ -122,7 +122,7 @@ kubectl apply -f dsi_jenkins.yaml
 
 ### Jenkins subiu com certificado
 
-![Jenkinns UP](https://github.com/galenothiago/tutoriais/blob/master/images/nfs-manager.jpeg?raw=true)
+![Jenkinns UP](https://raw.githubusercontent.com/galenothiago/tutoriais/master/images/jenkins.jpeg)
 
 ## References
 

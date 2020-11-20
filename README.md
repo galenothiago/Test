@@ -2,4 +2,4 @@
 
 Criando cluster Kubernetes com kubeadm e minikube.
 
-Deply de aplicações Mginx e Let's.
+Deploy de aplicações Nginx com NFS, Jenkins  e Let's encrypt.
